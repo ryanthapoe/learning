@@ -1,33 +1,33 @@
 function trap_rainwater(arr) {
-  let max_rainwater = 0,
-    temp_block = [],
-    currentBlock = 0;
+  let total = 0,
+    maxR = 0,
+    maxL = 0;
+
   for (let i = 0; i < arr.length; i++) {
-    if (arr[i] > currentBlock || i === arr.length - 1) {
-      const blok_terpendek = Math.min(currentBlock, arr[i]);
-      let temp_rainwater;
-      temp_block.length > 0
-        ? (temp_rainwater = temp_block.reduce(
-            (a, b) => a + (blok_terpendek - b)
-          ))
-        : (temp_rainwater = 0);
-      max_rainwater = Math.max(max_rainwater, temp_rainwater);
-      temp_block = [];
-      currentBlock = arr[i];
-    } else {
-      temp_block.push(arr[i]);
+    for (let l = i - 1; l >= 0; l--) {
+      arr[l] > maxL ? (maxL = arr[l]) : (maxL = maxL);
     }
+    for (let r = i + 1; r < arr.length; r++) {
+      arr[r] > maxR ? (maxR = arr[r]) : (maxR = maxR);
+    }
+    console.log({ maxL, maxR });
+    const currentWater = Math.min(maxL, maxR) - arr[i];
+    currentWater > 0 ? (total += currentWater) : null;
+    maxR = 0;
+    maxL = 0;
+    console.log({ total });
   }
-  return max_rainwater;
+
+  return total;
 }
 
-const testOne = [0, 1, 0, 2, 1, 0, 3, 1, 0, 1, 2];
+const testOne = [5, 0, 3, 0, 0, 0, 2, 3, 4, 2, 1];
 const testTwo = [0];
 const testThree = [];
 const testFour = [4, 8, 4];
 const testFive = [0, 1, 0, 2, 1, 0, 3, 1, 0, 1, 2];
 console.log(trap_rainwater(testOne));
-console.log(trap_rainwater(testTwo));
-console.log(trap_rainwater(testThree));
-console.log(trap_rainwater(testFour));
+// console.log(trap_rainwater(testTwo));
+// console.log(trap_rainwater(testThree));
+// console.log(trap_rainwater(testFour));
 console.log(trap_rainwater(testFive));
