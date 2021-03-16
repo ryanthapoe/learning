@@ -19,14 +19,14 @@ function findMostWater(arr) {
   let i = 0;
   let j = arr.length - 1;
 
-  while (j - i > 0) {
+  while (i < j) {
     console.log(j, i);
     const panjang = Math.min(arr[i], arr[j]);
     const lebar = j - i;
     const luas = panjang * lebar;
     if (luas > maxLuas) maxLuas = luas;
     console.log(panjang === arr[i]);
-    if (panjang === arr[i]) {
+    if (arr[i] <= arr[j]) {
       i++;
     } else {
       j--;
