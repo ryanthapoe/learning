@@ -4,18 +4,34 @@ class HashTable {
   }
 
   set(key, value) {
-    if (this.data[this._hash(key)]) {
-      this.data[this._hash(key)].push([key, value]);
-    } else {
-      this.data[this._hash(key)] = [[key, value]];
+    const address = this._hash(key);
+    if (!this.data[address]) {
+      this.data[address] = [];
     }
-    return this._hash(key);
+    this.data[address].push([key, value]);
+    return address; // 0(1)
   }
 
   get(key) {
-    const arr = this.data[this._hash(key)];
-    const data = arr.filter((d) => d[0] === key);
-    return data[0][1];
+    const bucket = this.data[this._hash(key)];
+    if (bucket) {
+      for (let i = 0; i < bucket.length; i++) {
+        if (bucket[i][0] === key) return bucket[i][1];
+      }
+    }
+    return undefined; // 0(1) if no collision
+  }
+
+  keys() {
+    const keys = [];
+    for (let i = 0; i < this.data.length; i++) {
+      if (this.data[i]) {
+        for (let j = 0; j < this.data[i].length; j++) {
+          keys.push(this.data[i][j][0]);
+        }
+      }
+    }
+    return keys;
   }
 
   _hash(key) {
@@ -32,6 +48,9 @@ console.log(testHash.set("grapes", 1000));
 console.log(testHash.get("grapes"));
 console.log(testHash.set("apple", 500));
 console.log(testHash.get("apple"));
+console.log(testHash.get("orange"));
+console.log(testHash.set("orange", 100));
+console.log(testHash.keys());
 
 const hash = {
   grapes: 1000,
