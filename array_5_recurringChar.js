@@ -9,7 +9,7 @@ const recurringChar = (arr) => {
   return undefined;
 };
 
-console.log(recurringChar([2, 1, 1, 2, 3, 5, 1, 2, 4]));
+console.log(recurringChar([2, 5, 5, 2, 3, 5, 1, 2, 4]));
 console.log(recurringChar([2, 5, 1, 2, 3, 5, 1, 2, 4]));
 console.log(recurringChar([2, 3, 4, 5]));
 console.log(recurringChar([2]));
