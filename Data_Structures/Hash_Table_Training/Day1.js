@@ -19,6 +19,18 @@ class HashTable {
     return hashAddr;
   }
 
+  keys() {
+    const keys = [];
+    this.data.forEach((d) => {
+      if (typeof d === "object") {
+        d.forEach((v) => {
+          keys.push(v[0]);
+        });
+      }
+    });
+    return keys;
+  }
+
   _hash(key) {
     let hash = 0;
     for (let i = 0; i < key.length; i++) {
@@ -41,3 +53,4 @@ console.log(testing.get("grapes"));
 console.log(testing.get("watermelon"));
 console.log(testing.get("pineApple"));
 console.log(testing.get("Nanas"));
+console.log(testing.keys());
