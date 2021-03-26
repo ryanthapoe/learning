@@ -2,14 +2,6 @@
 
 function sumTwo(arr, targetSum) {
   if (arr.length < 2) return null;
-  // for (let i = 0; i < arr.length; i++) {
-  //   for (let j = i + 1; j < arr.length; j++) {
-  //     if (arr[i] + arr[j] === targetSum) {
-  //       return [i, j];
-  //     }
-  //   }
-  // }
-
   // With two pointer
   // One pointer keep the first value
   // Another pointer find the second value
@@ -20,22 +12,6 @@ function sumTwo(arr, targetSum) {
   //   }
   //   // if (anotherValue) return [i, anotherValue];
   // }
-
-  // Only work for array that has been sorted
-
-  // for (let i = 0; i < arr.length; i++) {
-  //   if (arr[i] + arr[arr.length - 1] === targetSum) {
-  //     return [i, arr.length - 1];
-  //   }
-  //   if (arr[i] + arr[arr.length - 1] > targetSum) {
-  //     for (let j = i + 1; j < arr.length; j++) {
-  //       if (arr[i] + arr[j] === targetSum) {
-  //         return [i, j];
-  //       }
-  //     }
-  //   }
-  // }
-
   // Using hash table
   const numberToFind = {};
 
@@ -49,7 +25,6 @@ function sumTwo(arr, targetSum) {
       numberToFind[target] = i;
     }
   }
-
   // if no index sum up to target return null
   return null;
 }
