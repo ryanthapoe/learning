@@ -1,34 +1,18 @@
 function appendAndDelete(s, t, k) {
-  s = s.split("");
-  t = t.split("");
-  const temp = s;
-  if (s.length === t.length) {
-    if (s.length * 2 <= k) return "Yes";
-  }
-  let j = 0,
-    i = 0,
-    operation = 0;
-  while (i < temp.length && j < t.length) {
-    console.log({ i, j });
-    if (temp[i] === t[j]) {
-      i++;
-      j++;
+  let commonLength = 0;
+  for (let i = 0; i < Math.min(s.length, t.length); i++) {
+    if (s.charAt(i) === t.charAt(i)) {
+      commonLength++;
     } else {
-      temp.splice(i, 1);
-      operation++;
+      break;
     }
-    if (operation > k) return "No";
   }
-  if (j === t.length) {
-    if (temp.length - i < k) return "Yes";
-  }
-  while (j < t.length) {
-    temp.push(t[j]);
-    operation++;
-    j++;
-    if (operation > k) return "No";
-  }
-  if (operation === k) {
+
+  if (s.length + t.length - 2 * commonLength > k) {
+    return "No";
+  } else if ((s.length + t.length - 2 * commonLength) % 2 === k % 2) {
+    return "Yes";
+  } else if (s.length + t.length - k < 0) {
     return "Yes";
   } else {
     return "No";
