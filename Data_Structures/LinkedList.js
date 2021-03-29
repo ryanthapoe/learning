@@ -40,32 +40,34 @@ class LinkedList {
 
   insert(index, value) {
     if (index === 0) return this.prepend(value);
-    if (index >= this.length) return "Index undefined";
+    if (index >= this.length) return this.append(value);
     const newNode = new Node(value);
-    let current = this.head;
-    for (let i = 1; i < index; i++) {
-      current = current.next;
-    }
-    newNode.next = current.next;
-    current.next = newNode;
+    const leader = this.traverseToIndex(index - 1);
+    const holdingPointer = leader.next;
+    leader.next = newNode;
+    newNode.next = holdingPointer;
     this.length++;
-    return this.length;
+    return this.printList();
   }
 
   delete(index) {
     if (index === 0) return "Cannot delete head index";
     if (index >= this.length) return undefined;
-    let current = this.head,
-      prev,
-      next;
-    for (let i = 0; i < index; i++) {
-      prev = current;
-      current = current.next;
-      next = current.next;
-    }
-    prev.next = next;
+    const leader = this.traverseToIndex(index - 1);
+    const deleted = leader.next;
+    leader.next = deleted.next;
     this.length--;
-    return current.value;
+    return this.printList();
+  }
+
+  traverseToIndex(index) {
+    let i = 0,
+      current = this.head;
+    while (i !== index) {
+      current = current.next;
+      i++;
+    }
+    return current;
   }
 
   printList() {
@@ -89,6 +91,4 @@ console.log(tester.prepend(12));
 console.log(tester.printList());
 console.log(tester.lookup(10));
 console.log(tester.insert(2, 8));
-console.log(tester.printList());
-console.log(tester.delete(1));
-console.log(tester.printList());
+console.log(tester.delete(4));
