@@ -91,4 +91,5 @@ console.log(tester.prepend(12));
 console.log(tester.printList());
 console.log(tester.lookup(10));
 console.log(tester.insert(2, 8));
-console.log(tester.delete(4));
+console.log(tester.delete(1));
+console.log(tester.delete(tester.length - 1));
