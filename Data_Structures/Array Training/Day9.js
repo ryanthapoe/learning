@@ -69,3 +69,5 @@ console.log(tester.remove(0));
 console.log(tester.unshift("index 0"));
 console.log(tester.unshift("pertama"));
 console.log(tester.unshift("paling pertama"));
+console.log(tester.lookup(0));
+console.log(tester.insert(0, "new"));
