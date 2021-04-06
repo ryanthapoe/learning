@@ -6,7 +6,7 @@ class HashTable {
   _hash(key) {
     let hash = 0;
     for (let i = 0; i < key.length; i++) {
-      hash = (hash + key.codeCharAt(i)) % key.length;
+      hash = (hash + key.charCodeAt(i)) % key.length;
     }
     return hash;
   }
@@ -14,8 +14,8 @@ class HashTable {
   print() {
     const result = [];
     for (let i = 0; i < this.data.length; i++) {
-      if (this.data[i] !== undefined) {
-        for (let j = 0; j < this.data[i].length; i++) {
+      if (this.data[i]) {
+        for (let j = 0; j < this.data[i].length; j++) {
           result.push(this.data[i][j][1]);
         }
       }
@@ -53,3 +53,17 @@ class HashTable {
     return keys;
   }
 }
+
+const tester = new HashTable();
+console.log(tester.set("grapes", 1000));
+console.log(tester.set("apples", 1));
+console.log(tester.set("orange", 2));
+console.log(tester.set("watermelon", 31));
+console.log(tester.set("mango", 0));
+console.log(tester.set("pineApple", 32));
+console.log(tester.set("Nanas", 33));
+console.log(tester.get("grapes"));
+console.log(tester.get("watermelon"));
+console.log(tester.get("pineApple"));
+console.log(tester.get("Nanas"));
+console.log(tester.keys());
