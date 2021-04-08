@@ -53,17 +53,3 @@ class HashTable {
     return keys;
   }
 }
-
-const tester = new HashTable();
-console.log(tester.set("grapes", 1000));
-console.log(tester.set("apples", 1));
-console.log(tester.set("orange", 2));
-console.log(tester.set("watermelon", 31));
-console.log(tester.set("mango", 0));
-console.log(tester.set("pineApple", 32));
-console.log(tester.set("Nanas", 33));
-console.log(tester.get("grapes"));
-console.log(tester.get("watermelon"));
-console.log(tester.get("pineApple"));
-console.log(tester.get("Nanas"));
-console.log(tester.keys());
