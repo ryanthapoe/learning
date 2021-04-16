@@ -70,6 +70,22 @@ class LinkedList {
     }
     return current;
   }
+
+  reverse() {
+    if (!this.head.next) return this.head.value;
+    let first = this.head;
+    this.tail = this.head;
+    let second = first.next;
+    while (second) {
+      const temp = second.next;
+      second.next = first;
+      first = second;
+      second = temp;
+    }
+    this.head.next = null;
+    this.head = first;
+    return this.print();
+  }
 }
 
 const tester = new LinkedList(10);
@@ -83,3 +99,6 @@ console.log(tester.insert(2, "deleted"));
 console.log(tester.remove(2));
 console.log(tester.remove(tester.length - 1));
 console.log(tester.length);
+console.log(tester.reverse());
+console.log(tester.append("Last"));
+console.log(tester.reverse());
