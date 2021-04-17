@@ -93,3 +93,5 @@ console.log(tester.lookup(10));
 console.log(tester.insert(2, 8));
 console.log(tester.delete(1));
 console.log(tester.delete(tester.length - 1));
+
+module.exports = LinkedList;
