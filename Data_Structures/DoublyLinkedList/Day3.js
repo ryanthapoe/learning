@@ -86,3 +86,12 @@ class DoublyLinkedList {
     return this.print();
   }
 }
+const tester = new DoublyLinkedList(1);
+console.log(tester.append(2));
+console.log(tester.prepend(0));
+console.log(tester.lookup(2));
+console.log(tester.insert(2, "Deleted"));
+console.log(tester.insert(1, "FirstStuff"));
+console.log(tester.insert(999, "LastStuff"));
+console.log(tester.remove(3));
+console.log(tester.print(true));
