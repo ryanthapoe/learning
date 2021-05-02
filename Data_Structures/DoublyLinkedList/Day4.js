@@ -79,17 +79,17 @@ class DoublyLinkedList {
     return this.print();
   }
 
-  // reverse() {
-  //   let current = this.tail;
-  //   while (current !== null) {
-  //     const next = current.next;
-  //     current.next = current.prev;
-  //     current.prev = next;
-  //     current = current.next;
-  //   }
-  //   this.head
-  //   return this.print();
-  // }
+  reverse() {
+    let current = this.tail;
+    while (current !== null) {
+      const prev = current.prev;
+      current.prev = current.next;
+      current.next = prev;
+      current = prev;
+    }
+    this.head = this.tail;
+    return this.print();
+  }
 }
 const tester = new DoublyLinkedList(1);
 console.log(tester.append(2));
@@ -100,6 +100,6 @@ console.log(tester.insert(1, "FirstStuff"));
 console.log(tester.insert(999, "LastStuff"));
 console.log(tester.remove(3));
 console.log(tester.print());
-// console.log(tester.reverse());
+console.log(tester.reverse());
 
 // last -> 2
