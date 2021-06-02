@@ -8,11 +8,12 @@ function sumTwo(arr, targetSum) {
   // for (let i = 0; i < arr.length; i++) {
   //   const numberToFind = targetSum - arr[i];
   //   for (let j = i + 1; j < arr.length; j++) {
-  //     if (arr[j] === numberToFind) return [i, j];
+  //     if (arr[j] === numberToFind) return [i, j];-
   //   }
   //   // if (anotherValue) return [i, anotherValue];
   // }
   // Using hash table
+
   const numberToFind = {};
 
   for (let i = 0; i < arr.length; i++) {
